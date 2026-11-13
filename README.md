@@ -1,5 +1,8 @@
 # EridiumX
 
+**NOTE:** The source code is reserved for the developers. However, the app contains the code up to the latest release, which is also available privately.
+
+
 **v0.18.5** Desktop tools for file encryption, passwords, authenticator codes and document conversion, with Secure Share integration for encrypted transfers and Rooms.
 
 Local tools work offline. Secure Share features require a compatible server. `SecureExtended` remains the internal project name in source paths, file formats and some release assets.
