@@ -16,7 +16,6 @@ Download the package for your platform from **Releases**.
 | Linux x64 portable ZIP | Extract the entire archive and run the included launcher. |
 | macOS Apple silicon (ARM64) portable ZIP | Extract the entire archive and open the included app. |
 | Windows x64 portable ZIP | Extract the entire archive and run the included executable. Keep the bundled runtime and libraries together. |
-| All-in-one JAR | Install Java 21 or newer and run `java -jar "downloaded-filename.jar"`. |
 
 Keep a separate copy of an existing vault before upgrading. Saving with a newer version may update its format.
 
