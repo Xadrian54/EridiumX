@@ -1,61 +1,60 @@
 # EridiumX
 
-**NOTE:** The source code is reserved for the developers. However, the app contains the code up to the latest release, which is also available privately.
+**v0.20.0** Desktop tools for encryption, passwords, authenticator codes and local file transfers, with optional Secure Share integration and a customizable workspace.
 
-
-**v0.18.5** Desktop tools for file encryption, passwords, authenticator codes and document conversion, with Secure Share integration for encrypted transfers and Rooms.
-
-Local tools work offline. Secure Share features require a compatible server. `SecureExtended` remains the internal project name in source paths, file formats and some release assets.
+Application source is maintained privately. This repository provides public release packages and documentation. `SecureExtended` remains the internal name in some paths and formats.
 
 ## Getting started
 
-Download the package for your platform from **Releases**.
+Download your platform package from [Releases](https://github.com/Xadrian54/EridiumX/releases), extract the entire archive and keep the bundled runtime and libraries together.
 
-| Package | Launch |
+| Platform | Launch |
 | --- | --- |
-| Linux x64 portable ZIP | Extract the entire archive and run the included launcher. |
-| macOS Apple silicon (ARM64) portable ZIP | Extract the entire archive and open the included app. |
-| Windows x64 portable ZIP | Extract the entire archive and run the included executable. Keep the bundled runtime and libraries together. |
+| Windows x64 | Run the included executable. |
+| Linux x64 | Run the included launcher. |
+| macOS Apple silicon | Open the included app. |
 
-Keep a separate copy of an existing vault before upgrading. Saving with a newer version may update its format.
+Keep a separate copy of existing vaults before upgrading. Local tools work offline. Server workflows require a compatible HTTPS Secure Share installation.
 
-## Features
+## Tools
 
-| Tool | Capabilities |
+| Area | Features |
 | --- | --- |
-| **File / Text** | Password-based encryption and decryption of files and text, with optional ZIP compression in supported workflows. |
-| **OpenPGP** | Generate identities, inspect fingerprints, import and export keys, encrypt, decrypt, sign and verify text or files. |
-| **Identities / Re-encryption** | Inspect HPKE and OpenPGP identities, export public keys and re-encrypt supported text for another recipient. |
-| **Password generator** | Random character passwords, defaulting to 20 characters, or word passphrases. Configure character groups and exclusions, then transfer results directly to supported tools. |
-| **Password manager** | Local encrypted vaults for logins and notes, entry counts, timestamps, up to two previous passwords per login and a local password audit. |
-| **Authenticator** | TOTP codes in a standalone encrypted file or a separately protected section inside a vault. Import setup URIs, seeds or QR images and optionally lock sessions on a timer. |
-| **Secure Share** | Inspect share metadata and retrieve encrypted text or files from a compatible HTTPS server. |
-| **Quick Share** | Create a QR invitation in the server panel and send multiple files from a smartphone browser to a PC, with encrypted uploads and progress feedback. |
-| **Rooms / Voice / Party** | Encrypted Rooms, contact invitations and access to voice and Watchparty workflows. The browser Watchparty includes YouTube link preview, chat search, date filtering and playback diagnostics. |
-| **QR / Barcodes** | Read codes from images, clipboard or screen selections. Create customized QR codes and export PNG or SVG, including password-protected QR content. |
-| **Recovery** | Local password recovery using masks, dictionaries, typo variations or remembered characters with optional positions. The remembered-character mode supports lengths up to 32 characters. |
-| **Convert** | Combine images into one PDF, adjust page order and fit each image to portrait or landscape A4. Export Office documents to PDF through an installed LibreOffice instance. |
-| **Shredder** | Overwrite selected files using configurable patterns and pacing. |
+| File / Text | Encrypt and decrypt files or text, optional ZIP compression, password generation with a saved length from 20 to 32 characters. |
+| OpenPGP / Identities | Generate and manage keys, inspect fingerprints, encrypt, decrypt, sign, verify and re-encrypt supported content for another recipient. |
+| Password generator | Character passwords or word passphrases, configurable character sets, and direct transfer to supported tools including QR generation. |
+| Password manager | Encrypted local vaults, logins, notes, entry counts, password history, audit and additionally protected cards with optional IBAN/BIC. |
+| Authenticator | TOTP in a standalone encrypted file or a separately protected vault section, QR/setup import and timed locking. |
+| Vault sync | Optional bidirectional encrypted sync, offline-change detection, explicit conflict handling and bounded server backups. |
+| Secure Share | Inspect metadata, retrieve encrypted content and forward supported encrypted containers unchanged to a local device. |
+| Quick Share | Browser-based QR/NFC exchanges and native app reception, bounded collection counts and file expiry. Forward downloads to LocalSend or relay local receptions into an existing Quick exchange. |
+| LocalSend | Local network discovery, manual IP entry, file selection, HTTPS transfer, progress and cancellation. Compatible with [LocalSend: Transfer Files](https://play.google.com/store/apps/details?id=org.localsend.localsend_app). |
+| Rooms / Voice / Party | Encrypted Rooms, automatic updates, unread indication and access to voice and browser Watchparty workflows with cinema view and optional chat. |
+| QR / Barcodes | Read codes, design QR content, generate/show/copy passwords and export PNG or SVG. |
+| Recovery | Masks, dictionaries, typo variations and remembered characters with optional positions, with resumable searches for supported encryption profiles. |
+| Convert | Images to PDF with page ordering, and Office to PDF through an installed LibreOffice instance. |
+| Shredder | Overwrite selected files with configurable patterns and pacing. |
+| Color Tool | Independent color selection and copyable HEX/RGB/sRGB output, including conversion of Display P3 input to sRGB. |
+| Design / Settings | Visual theme editing, individual category accents, configuration import/export, reorderable areas and separate windows. |
 
-## Vault storage and backups
+## Storage and synchronization
 
-Vaults use Argon2id and authenticated AES-256-GCM encryption. Local saves retain the preceding revision in an encrypted `.bak` file.
+Vaults use Argon2id and authenticated AES-256-GCM encryption. Local saves retain the preceding revision in an encrypted `.bak` file. Server sync and backups require the matching backup extension and explicit session approval. Keep the server address, backup ID and dedicated token accessible outside the vault.
 
-Server backups require the **Secure Share backup extension** and explicit approval for the current vault session. Upload manually or after successful local saves. Restore a confirmed snapshot using its original master password, with verification and decryption performed locally.
+The server applies a 64-snapshot retention policy alongside storage quotas. Restore a selected snapshot with its corresponding master password. Conflicting vault versions require a decision rather than silent replacement.
 
-Keep the server address, backup ID and dedicated token accessible outside the vault. Updated servers automatically thin older snapshots and enforce retention and storage limits.
+LocalSend works over a shared local network, including a suitable hotspot. Enable encryption in the companion app. Quick relay files are staged encrypted on disk, with bounded memory and cleanup. Passing an encrypted container unchanged requires a compatible decryption tool on the receiving device.
 
-## Conversion and recovery
+## Personalization
 
-Image-to-PDF conversion runs locally. For Office-to-PDF conversion, select your LibreOffice executable (`soffice.exe` or `soffice`). 
-It runs in the background for the conversion.
+Use **Design / Settings** to edit colors, font size and rounding, import/export `.properties` files, and arrange areas. **Areas show/hide** beside Reset provides quick access to visibility and window controls. Closing a separate area window docks it again. Areas start docked after an app restart. Hiding Password Manager or Authenticator locks its session.
 
-Recovery supports selected SecureExtended containers, identities and vaults, OpenPGP files, ZIP and 7z archives, encrypted Office and LibreOffice documents, and PDFs. Compatibility depends on the encryption profile. Checkpoints allow searches to resume later, but unencrypted checkpoints contain the search inputs.
+Settings export excludes passwords, tokens, vault contents and server permissions, but can contain device names and folder paths. Imported themes apply immediately, imported operating preferences after restart. Display P3 colors outside sRGB are clipped after confirmation.
 
-File overwriting cannot remove copies retained by SSD wear levelling, snapshots or backups.
+## Notes
 
-## Reporting a problem
+Office conversion requires a local LibreOffice installation. Recovery compatibility depends on the encryption profile, and unencrypted recovery checkpoints contain search inputs. File overwriting cannot remove copies retained by SSD wear levelling, snapshots or backups.
 
-Include the app version, operating system, affected workflow, error message and reproduction steps. For JAR launches, include the Java version. Remove passwords, private keys, authenticator seeds and personal data from reports.
+For problem reports, include the version, operating system, affected workflow, error and reproduction steps. Remove passwords, keys, authenticator seeds and personal data.
 
 [Project website](https://eridium.xyz)
