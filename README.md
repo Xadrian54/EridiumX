@@ -1,6 +1,6 @@
 # EridiumX
 
-**v0.20.0** Desktop tools for encryption, passwords, authenticator codes and local file transfers, with optional Secure Share integration and a customizable workspace.
+**v0.20.2** Desktop tools for encryption, passwords, authenticator codes and local file transfers, with optional Secure Share integration and a customizable workspace.
 
 Application source is maintained privately. This repository provides public release packages and documentation. `SecureExtended` remains the internal name in some paths and formats.
 
@@ -14,7 +14,11 @@ Download your platform package from [Releases](https://github.com/Xadrian54/Erid
 | Linux x64 | Run the included launcher. |
 | macOS Apple silicon | Open the included app. |
 
-Keep a separate copy of existing vaults before upgrading. Local tools work offline. Server workflows require a compatible HTTPS Secure Share installation.
+Keep a separate copy of existing vaults before upgrading. Local tools work offline. Server workflows require a compatible HTTPS Secure Share.
+
+Tab shortcuts
+- Press Ctrl+K to open an area in the main window or Ctrl+Shift+K to open it in a separate window. Both shortcuts include hidden areas.
+- To pop out a tab, hold the right mouse button, drag the tab above the tab bar, and release. With the left mouse button, hold for about 0.7 seconds before dragging out.
 
 ## Tools
 
